@@ -23,7 +23,7 @@ client.connect(err => {
     const usercollections= collections.collection('user')
     const reviewcollection = collections.collection('reviews')
 
-    // --------------------post new user-------------------
+    // --------------------post new user-added-------------------
     app.post('/adduser',async(req,res)=>{
         console.log(req.body)
         const result = await usercollections.insertOne(req.body)
