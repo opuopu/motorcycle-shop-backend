@@ -124,8 +124,12 @@ app.put('/user/admin',async(req,res)=>{
 // -----------------admin role----------
 app.get('/user/:email',async(req,res)=>{
   const email = req.params.email
-  const user = await usercollections.find({email:email}).toArray()
-  res.send(user)
+  const user = await usercollections.findOne({email:email})
+  let isAdmin = false
+  if(user?.role ==='admin'){
+    isAdmin =true
+  }
+  res.send({admin:isAdmin})
 })
 
 // ------------------update status-------------
